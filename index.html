@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Photobook</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <h1>Photobook</h1>
+    <label class="field inline">Paper
+      <select id="paper">
+        <option>A4</option><option>Letter</option><option>A5</option><option>A3</option>
+      </select>
+    </label>
+    <div class="spacer"></div>
+    <label class="btn">Add photos<input id="addPhotos" type="file" accept="image/*" multiple hidden></label>
+    <button id="saveProject" class="btn">Save project</button>
+    <label class="btn">Open project<input id="openProject" type="file" accept=".json,application/json" hidden></label>
+    <button id="previewBtn" class="btn">▶ Preview book</button>
+    <div class="export">
+      <button id="exportPdf" class="btn primary">Export PDF ▾</button>
+      <div id="exportMenu" class="menu" hidden>
+        <button data-kind="print"><b>Print PDF</b><small>Ready to print. Fold-and-staple books come out in print order: double-sided, flip on short edge.</small></button>
+        <button data-kind="reading"><b>Reading PDF</b><small>Every page in reading order, for checking or sharing.</small></button>
+        <button data-kind="proof"><b>Proof PDF</b><small>Page numbers only. Print on scrap paper to check order and flipping.</small></button>
+        <div class="menu-sep">Printer can't do double-sided?</div>
+        <button data-kind="fronts"><b>Front sides only</b><small>Print these first.</small></button>
+        <button data-kind="backs"><b>Back sides only</b><small>Put the printed stack back in, then print these.</small></button>
+        <label class="menu-check"><input type="checkbox" id="rotateBacks"> Rotate back sides 180° <small>if they came out upside down</small></label>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <aside class="left">
+      <section>
+        <div class="row-head">
+          <h2>Sheets</h2>
+          <button id="addSheet" class="btn small">+ Sheet</button>
+        </div>
+        <ol id="sheetList" class="sheets"></ol>
+      </section>
+      <section id="sheetPanel"></section>
+    </aside>
+
+    <section class="stage">
+      <div id="canvasWrap" class="canvas-wrap"></div>
+      <input id="cellPicker" type="file" accept="image/*" multiple hidden>
+      <p class="hint">Click an empty cell to choose a photo · double-click any cell to replace · drag a cropped photo to slide it · ⌥ Option-drag to swap cells · scroll for more sheets</p>
+      <div class="library" id="libraryBox">
+        <div class="row-head"><h2>Photos <span id="libCount" class="count"></span></h2>
+          <label class="btn small">+ Add photos<input id="libPhotos" type="file" accept="image/*" multiple hidden></label></div>
+        <div id="library" class="thumbs"></div>
+      </div>
+    </section>
+
+    <aside class="right" id="cellPanel"></aside>
+  </main>
+
+  <div id="viewer" class="viewer" hidden>
+    <div class="viewer-bar">
+      <select id="bookPick"></select>
+      <span id="pageInfo" class="page-info"></span>
+      <button id="closeViewer" class="btn small">Close ✕</button>
+    </div>
+    <div id="bookStage" class="book-stage">
+      <button id="flipPrev" class="flip-btn" aria-label="Previous page">‹</button>
+      <div id="book" class="book"></div>
+      <button id="flipNext" class="flip-btn" aria-label="Next page">›</button>
+    </div>
+    <p class="viewer-hint">Click a page or use ← → to turn · Esc to close</p>
+  </div>
+
+  <div id="pdfModal" class="viewer" hidden>
+    <div class="viewer-bar">
+      <b id="pdfName" class="pdf-name"></b>
+      <span id="pdfInfo" class="page-info"></span>
+      <span class="spacer"></span>
+      <button id="pdfDownload" class="btn primary">Download PDF</button>
+      <button id="pdfClose" class="btn small">Close ✕</button>
+    </div>
+    <iframe id="pdfFrame" class="pdf-frame" title="PDF preview"></iframe>
+  </div>
+
+  <div id="status" class="status" hidden></div>
+
+  <script src="vendor/pdf-lib.min.js"></script>
+  <script src="vendor/fontkit.umd.min.js"></script>
+  <script src="vendor/fonts.js"></script>
+  <script src="core.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
