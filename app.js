@@ -591,11 +591,8 @@
       { title: 'Folding instructions for an A4 8 page photo zine', by: 'Alison Spence Montillet · YouTube', url: 'https://www.youtube.com/watch?v=MKM3PfFhsbQ' },
       { title: 'Dirty Little Zine — fold guide and zine maker', by: 'dirtylittlezine.com', url: 'https://dirtylittlezine.com/' },
     ],
-    // Shown on any ordinary sheet whose binding is "Cut & fold each piece"
-    fold: [
-      { title: 'How to make an Easy DIY Booklet Style Photo Book', by: 'Travel Journal Company · YouTube', url: 'https://www.youtube.com/watch?v=NRK_grvS7Ag' },
-    ],
     saddle: [
+      { title: 'How to make an Easy DIY Booklet Style Photo Book', by: 'Travel Journal Company · YouTube', url: 'https://www.youtube.com/watch?v=NRK_grvS7Ag' },
       { title: 'Fold & Staple — A5 and pocket photo zines', by: 'foldstaple.com', url: 'https://foldstaple.com/' },
     ],
   };
@@ -644,7 +641,7 @@
     const zine = sh.mode === 'zine';
     const presetKey = presetOf(sh);
     const saddle = sh.mode === 'saddle';
-    const links = [...(sh.mode === 'grid' && sh.binding === 'fold' ? RESOURCES.fold : []), ...(RESOURCES[presetKey] || [])];
+    const links = RESOURCES[presetKey] || [];
     const p = $('sheetPanel');
     p.innerHTML = `
       <h2>Layout</h2>
