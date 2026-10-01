@@ -591,6 +591,10 @@
       { title: 'Folding instructions for an A4 8 page photo zine', by: 'Alison Spence Montillet · YouTube', url: 'https://www.youtube.com/watch?v=MKM3PfFhsbQ' },
       { title: 'Dirty Little Zine — fold guide and zine maker', by: 'dirtylittlezine.com', url: 'https://dirtylittlezine.com/' },
     ],
+    // Shown on any ordinary sheet whose binding is "Cut & fold each piece"
+    fold: [
+      { title: 'How to make an Easy DIY Booklet Style Photo Book', by: 'Travel Journal Company · YouTube', url: 'https://www.youtube.com/watch?v=NRK_grvS7Ag' },
+    ],
     saddle: [
       { title: 'Fold & Staple — A5 and pocket photo zines', by: 'foldstaple.com', url: 'https://foldstaple.com/' },
     ],
@@ -640,6 +644,7 @@
     const zine = sh.mode === 'zine';
     const presetKey = presetOf(sh);
     const saddle = sh.mode === 'saddle';
+    const links = [...(sh.mode === 'grid' && sh.binding === 'fold' ? RESOURCES.fold : []), ...(RESOURCES[presetKey] || [])];
     const p = $('sheetPanel');
     p.innerHTML = `
       <h2>Layout</h2>
@@ -690,8 +695,8 @@
         ? 'Each cell is cut out and folded down the middle (dashed line), then glued back to back with the next. Each piece opens as one spread. Preview book shows it that way.'
         : 'Each sheet is one page of the book.'}</p>`}
       <button class="btn small" id="applyAll">Apply selected cell's style to every cell</button>
-      ${(RESOURCES[presetKey] || []).length ? `<div class="resources"><h2>Resources</h2>
-        ${RESOURCES[presetKey].map((r) => `<a href="${esc(r.url)}" target="_blank" rel="noopener"><b>${esc(r.title)}</b><small>${esc(r.by)} ↗</small></a>`).join('')}</div>` : ''}
+      ${links.length ? `<div class="resources"><h2>Resources</h2>
+        ${links.map((r) => `<a href="${esc(r.url)}" target="_blank" rel="noopener"><b>${esc(r.title)}</b><small>${esc(r.by)} ↗</small></a>`).join('')}</div>` : ''}
     `;
     p.querySelectorAll('[data-preset]').forEach((b) => (b.onclick = () => { applyPreset(sh, b.dataset.preset); state.selected = null; renderAll(); }));
     p.querySelectorAll('[data-bs]').forEach((b) => (b.onclick = () => { sh.bookSize = b.dataset.bs; renderAll(); }));
