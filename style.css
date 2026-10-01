@@ -235,7 +235,7 @@ textarea {
 #pdfModal .page-info { text-transform: none; letter-spacing: 0; font-family: inherit; }
 
 /* Per-format resource links */
-.resources { margin-top: 18px; padding-top: 14px; border-top: 1px dashed var(--line); display: flex; flex-direction: column; gap: 8px; }
+.resources { margin: 4px 0 14px; padding-bottom: 14px; border-bottom: 1px dashed var(--line); display: flex; flex-direction: column; gap: 8px; }
 .resources h2 { margin-bottom: 2px; }
 .resources a { display: block; padding: 8px 10px; border: 1.5px solid var(--ink); background: #fff; color: var(--ink); text-decoration: none; border-radius: 2px; }
 .resources a:hover { box-shadow: var(--shadow); }

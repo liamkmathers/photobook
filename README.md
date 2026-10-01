@@ -15,3 +15,5 @@ Print the PDF at 100% / "Actual size", not "Fit to page", especially for zines.
 Files: `core.js` (geometry + PDF), `app.js` (UI), `vendor/pdf-lib.min.js`.
 
 Fonts: Archivo Black, Barlow Condensed, Coda, Courier Prime, Cutive, Jost, Oswald, Playfair Display, Press Start 2P, Special Elite and Syncopate are Google Fonts under the SIL Open Font License. The TTFs live in `vendor/fonts/` and are bundled into `vendor/fonts.js` (rebuild that file if you add fonts) so they work offline from `file://` and embed into the PDF.
+
+When deploying changes, bump the `?v=` version on the CSS/JS links in `index.html` so browsers fetch the new files instead of a cached copy.

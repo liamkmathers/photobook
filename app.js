@@ -647,6 +647,8 @@
       <h2>Layout</h2>
       <div class="presets">${Object.entries(PRESETS).map(([k, v]) =>
         `<button class="btn ${presetKey === k ? 'on' : ''}" data-preset="${k}">${v.label}</button>`).join('')}</div>
+      ${links.length ? `<div class="resources"><h2>Resources</h2>
+        ${links.map((r) => `<a href="${esc(r.url)}" target="_blank" rel="noopener"><b>${esc(r.title)}</b><small>${esc(r.by)} ↗</small></a>`).join('')}</div>` : ''}
       ${saddle ? `
       <label class="field">Book size
         <div class="seg"><button data-bs="half" class="${sh.bookSize !== 'pocket' ? 'on' : ''}">${state.paper === 'A4' ? 'A5' : 'Half sheet'}</button><button data-bs="pocket" class="${sh.bookSize === 'pocket' ? 'on' : ''}">Pocket</button></div>
@@ -692,8 +694,6 @@
         ? 'Each cell is cut out and folded down the middle (dashed line), then glued back to back with the next. Each piece opens as one spread. Preview book shows it that way.'
         : 'Each sheet is one page of the book.'}</p>`}
       <button class="btn small" id="applyAll">Apply selected cell's style to every cell</button>
-      ${links.length ? `<div class="resources"><h2>Resources</h2>
-        ${links.map((r) => `<a href="${esc(r.url)}" target="_blank" rel="noopener"><b>${esc(r.title)}</b><small>${esc(r.by)} ↗</small></a>`).join('')}</div>` : ''}
     `;
     p.querySelectorAll('[data-preset]').forEach((b) => (b.onclick = () => { applyPreset(sh, b.dataset.preset); state.selected = null; renderAll(); }));
     p.querySelectorAll('[data-bs]').forEach((b) => (b.onclick = () => { sh.bookSize = b.dataset.bs; renderAll(); }));
