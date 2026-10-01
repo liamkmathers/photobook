@@ -588,6 +588,7 @@
       { title: 'How to make a Handmade Photobook', by: 'Heegs · YouTube', url: 'https://www.youtube.com/watch?v=3lisDYwlI_8' },
     ],
     zine: [
+      { title: 'Folding instructions for an A4 8 page photo zine', by: 'Alison Spence Montillet · YouTube', url: 'https://www.youtube.com/watch?v=MKM3PfFhsbQ' },
       { title: 'Dirty Little Zine — fold guide and zine maker', by: 'dirtylittlezine.com', url: 'https://dirtylittlezine.com/' },
     ],
     saddle: [
