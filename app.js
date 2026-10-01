@@ -582,6 +582,19 @@
   });
 
   // ---------- sheet list + sheet panel ----------
+  // Helpful links per format, shown under the layout controls. Add more here: { title, by, url }.
+  const RESOURCES = {
+    hsplit: [
+      { title: 'How to make a Handmade Photobook', by: 'Heegs · YouTube', url: 'https://www.youtube.com/watch?v=3lisDYwlI_8' },
+    ],
+    zine: [
+      { title: 'Dirty Little Zine — fold guide and zine maker', by: 'dirtylittlezine.com', url: 'https://dirtylittlezine.com/' },
+    ],
+    saddle: [
+      { title: 'Fold & Staple — A5 and pocket photo zines', by: 'foldstaple.com', url: 'https://foldstaple.com/' },
+    ],
+  };
+
   function presetOf(sh) {
     if (sh.mode === 'saddle' || sh.mode === 'zine') return sh.mode;
     const p = Object.entries(PRESETS).find(([k, v]) => k !== 'zine' && k !== 'saddle' && v.rows === sh.rows && v.cols === sh.cols);
@@ -676,6 +689,8 @@
         ? 'Each cell is cut out and folded down the middle (dashed line), then glued back to back with the next. Each piece opens as one spread. Preview book shows it that way.'
         : 'Each sheet is one page of the book.'}</p>`}
       <button class="btn small" id="applyAll">Apply selected cell's style to every cell</button>
+      ${(RESOURCES[presetKey] || []).length ? `<div class="resources"><h2>Resources</h2>
+        ${RESOURCES[presetKey].map((r) => `<a href="${esc(r.url)}" target="_blank" rel="noopener"><b>${esc(r.title)}</b><small>${esc(r.by)} ↗</small></a>`).join('')}</div>` : ''}
     `;
     p.querySelectorAll('[data-preset]').forEach((b) => (b.onclick = () => { applyPreset(sh, b.dataset.preset); state.selected = null; renderAll(); }));
     p.querySelectorAll('[data-bs]').forEach((b) => (b.onclick = () => { sh.bookSize = b.dataset.bs; renderAll(); }));

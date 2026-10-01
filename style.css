@@ -233,3 +233,11 @@ textarea {
 #pdfModal .viewer-bar .btn { margin-left: 0; }
 #pdfModal .viewer-bar .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
 #pdfModal .page-info { text-transform: none; letter-spacing: 0; font-family: inherit; }
+
+/* Per-format resource links */
+.resources { margin-top: 18px; padding-top: 14px; border-top: 1px dashed var(--line); display: flex; flex-direction: column; gap: 8px; }
+.resources h2 { margin-bottom: 2px; }
+.resources a { display: block; padding: 8px 10px; border: 1.5px solid var(--ink); background: #fff; color: var(--ink); text-decoration: none; border-radius: 2px; }
+.resources a:hover { box-shadow: var(--shadow); }
+.resources a b { display: block; font-weight: 600; font-size: 12.5px; }
+.resources a small { color: var(--muted); font-size: 11px; }
