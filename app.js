@@ -693,7 +693,6 @@
       <p class="note">${sh.binding === 'fold'
         ? 'Each cell is cut out and folded down the middle (dashed line), then glued back to back with the next. Each piece opens as one spread. Preview book shows it that way.'
         : 'Each sheet is one page of the book.'}</p>`}
-      <button class="btn small" id="applyAll">Apply selected cell's style to every cell</button>
     `;
     p.querySelectorAll('[data-preset]').forEach((b) => (b.onclick = () => { applyPreset(sh, b.dataset.preset); state.selected = null; renderAll(); }));
     p.querySelectorAll('[data-bs]').forEach((b) => (b.onclick = () => { sh.bookSize = b.dataset.bs; renderAll(); }));
@@ -721,13 +720,6 @@
         draw(); renderSheets(); renderCellPanel(); renderLibrary();
       });
     });
-    $('applyAll').onclick = () => {
-      if (state.selected == null) return status('Select a cell first', 2000);
-      const src = sh.cells[state.selected];
-      const keys = ['fit', 'pad', 'bg', 'capPos', 'capFont', 'capSize', 'capColor', 'capAlign'];
-      for (const c of sh.cells) for (const k of keys) c[k] = src[k];
-      draw();
-    };
   }
 
   // ---------- cell panel ----------
