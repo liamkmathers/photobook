@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Photobook</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="stylesheet" href="style.css?v=20261001c">
+  <link rel="stylesheet" href="style.css?v=20261002a">
 </head>
 <body>
   <header class="top">
@@ -52,7 +52,8 @@
       <p class="hint">Click an empty cell to choose a photo · double-click any cell to replace · drag a cropped photo to slide it · ⌥ Option-drag to swap cells · scroll for more sheets</p>
       <div class="library" id="libraryBox">
         <div class="row-head"><h2>Photos <span id="libCount" class="count"></span></h2>
-          <label class="btn small">+ Add photos<input id="libPhotos" type="file" accept="image/*" multiple hidden></label></div>
+          <div class="row-tools"><label class="thumb-size" title="Thumbnail size">Size<input id="thumbSize" type="range" min="60" max="220" step="4" value="110"></label>
+          <label class="btn small">+ Add photos<input id="libPhotos" type="file" accept="image/*" multiple hidden></label></div></div>
         <div id="library" class="thumbs"></div>
       </div>
     </section>
@@ -89,8 +90,8 @@
 
   <script src="vendor/pdf-lib.min.js"></script>
   <script src="vendor/fontkit.umd.min.js"></script>
-  <script src="vendor/fonts.js?v=20261001c"></script>
-  <script src="core.js?v=20261001c"></script>
-  <script src="app.js?v=20261001c"></script>
+  <script src="vendor/fonts.js?v=20261002a"></script>
+  <script src="core.js?v=20261002a"></script>
+  <script src="app.js?v=20261002a"></script>
 </body>
 </html>

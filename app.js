@@ -68,7 +68,7 @@
     const rec = {
       id, name, kind, bytes, orientation, w, h,
       preview: scaledCopy(img, PREVIEW_MAX),
-      thumb: scaledCopy(img, 160),
+      thumb: scaledCopy(img, 440),
     };
     images.set(id, rec);
     return rec;
@@ -570,6 +570,14 @@
     renderLibrary();
   };
   const libBox = $('libraryBox');
+  // Thumbnail size slider; remembered per browser.
+  const setThumbSize = (px) => libBox.style.setProperty('--thumb', px + 'px');
+  try { const saved = localStorage.getItem('pb.thumbSize'); if (saved) $('thumbSize').value = saved; } catch {}
+  setThumbSize($('thumbSize').value);
+  $('thumbSize').oninput = (e) => {
+    setThumbSize(e.target.value);
+    try { localStorage.setItem('pb.thumbSize', e.target.value); } catch {}
+  };
   const hasFiles = (e) => [...(e.dataTransfer.types || [])].includes('Files');
   libBox.addEventListener('dragover', (e) => { if (hasFiles(e)) { e.preventDefault(); libBox.classList.add('over'); } });
   libBox.addEventListener('dragleave', (e) => { if (!libBox.contains(e.relatedTarget)) libBox.classList.remove('over'); });

@@ -85,11 +85,14 @@ aside.left .seg button { flex: 1; padding: 6px 4px; }
 .hint { margin: 0; text-align: center; color: var(--muted); font-size: 12px; }
 
 /* Photo library */
-.library { background: var(--panel); border: 1.5px solid var(--ink); border-radius: 2px; padding: 10px 12px; }
+.library { --thumb: 110px; background: var(--panel); border: 1.5px solid var(--ink); border-radius: 2px; padding: 10px 12px; }
 .row-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
-.thumbs { display: flex; gap: 8px; overflow-x: auto; padding-top: 8px; min-height: 84px; }
+.row-tools { display: flex; align-items: center; gap: 12px; }
+.thumb-size { display: flex; align-items: center; gap: 6px; font-family: var(--label); text-transform: uppercase; letter-spacing: .12em; font-size: 10px; color: var(--muted); }
+.thumb-size input { width: 110px; }
+.thumbs { display: flex; gap: 8px; overflow-x: auto; padding-top: 8px; min-height: calc(var(--thumb) + 8px); }
 .thumbs .empty { color: var(--muted); align-self: center; }
-.thumb { position: relative; flex: 0 0 auto; width: 76px; height: 76px; overflow: hidden; border: 1.5px solid var(--ink); cursor: grab; background: #eee; }
+.thumb { position: relative; flex: 0 0 auto; width: var(--thumb); height: var(--thumb); overflow: hidden; border: 1.5px solid var(--ink); cursor: grab; background: #eee; }
 .thumb canvas { width: 100%; height: 100%; object-fit: cover; display: block; }
 .thumb .uses { position: absolute; left: 3px; bottom: 3px; background: var(--ink); color: #fff; font-size: 10px; padding: 0 4px; }
 .thumb .x { position: absolute; right: 2px; top: 2px; border: 0; background: var(--ink); color: #fff; width: 18px; height: 18px; border-radius: 50%; cursor: pointer; font-size: 11px; line-height: 18px; padding: 0; display: none; }
